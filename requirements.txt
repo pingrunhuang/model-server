@@ -1,0 +1,11 @@
+numpy
+scipy 
+h5py
+tensorflow==1.1.0 # tensorflow-gpu for GPU machines
+keras
+flask 
+gevent
+imutils 
+requests
+redis
+Pillow

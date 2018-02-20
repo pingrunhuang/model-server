@@ -16,4 +16,5 @@ RUN mv 000-default.conf /etc/apache2/sites-available/ &&\
     echo 'ServerName localhost' >> /etc/apache2/apache2.conf &&\ 
     service apache2 restart 
 
-ENTRYPOINT [ "/bin/bash" ]
+# CMD [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
+CMD [ "python3", "run_model_server.py" ]

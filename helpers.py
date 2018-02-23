@@ -12,6 +12,6 @@ def base64_decode_image(binary_image, dtype, shape):
     if sys.version_info.major == 3:
         binary_image = bytes(binary_image, "utf-8")
 
-    image = np.frombuffer(base64.decodestring(binary_image),dtype=dtype)
+    image = np.frombuffer(base64.decodebytes(binary_image),dtype=dtype)
     image = image.reshape(image)
     return image

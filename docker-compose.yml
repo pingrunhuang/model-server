@@ -6,5 +6,12 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html/keras-complete-rest-api
+    networks:
+      - model_server
   redis:
     image: "redis:alpine" 
+    networks: 
+      - model_server
+
+networks:
+  model_server:

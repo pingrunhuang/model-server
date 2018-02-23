@@ -75,7 +75,7 @@ def predict():
 					# dictionary so we can return it to the client
 					output = output.decode("utf-8")
 					data["predictions"] = json.loads(output)
- 
+
 					# delete the result from the database and break
 					# from the polling loop
 					db.delete(k)

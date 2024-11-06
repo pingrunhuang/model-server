@@ -11,11 +11,18 @@ import uuid
 import time
 import json
 import io
- 
+import os
+
 # initialize our Flask application and Redis server
+redis_host = os.environ["redis_host"]
+redis_port = os.environ["redis_port"]
+redis_db = os.environ["redis_db"]
 app = flask.Flask(__name__)
-db = redis.StrictRedis(host=settings.REDIS_HOST,
-	port=settings.REDIS_PORT, db=settings.REDIS_DB)
+db = redis.StrictRedis(
+	host=redis_host,
+	port=redis_port, 
+	db=redis_db
+)
  
 def prepare_image(image, target):
 	# if the image mode is not RGB, convert it
@@ -48,8 +55,10 @@ def predict():
 			# classification
 			image = flask.request.files["image"].read()
 			image = Image.open(io.BytesIO(image))
-			image = prepare_image(image,
-				(settings.IMAGE_WIDTH, settings.IMAGE_HEIGHT))
+			image = prepare_image(
+						image,
+						(settings.IMAGE_WIDTH, settings.IMAGE_HEIGHT)
+					)
  
 			# ensure our NumPy array is C-contiguous as well,
 			# otherwise we won't be able to serialize it

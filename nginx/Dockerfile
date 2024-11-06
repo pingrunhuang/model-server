@@ -1,0 +1,5 @@
+# Second stage: build the Nginx server
+FROM nginx:1.23-alpine
+
+# Copying our .conf files
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf

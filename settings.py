@@ -1,8 +1,3 @@
-# initialize Redis connection settings
-REDIS_HOST = "redis_service"
-REDIS_PORT = 6379
-REDIS_DB = 0
- 
 # initialize constants used to control image spatial dimensions and
 # data type
 IMAGE_WIDTH = 224
